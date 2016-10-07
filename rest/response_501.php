@@ -3,7 +3,8 @@
 $errData['code'] = 501;
 $errData['message'] = 'Unrecognized command';
 $response['error'] = $errData;
-if ($debugState) {
+$response['code'] = $errData['code'];
+		if ($debugState) {
 	// return debug info
 	if (empty($thisFile)) {$thisFile = __FILE__;}
 	$dbgData['module'] = $thisFile;

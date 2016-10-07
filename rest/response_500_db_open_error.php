@@ -6,6 +6,7 @@
 $errData['status'] = 500;
 $errData['message'] = 'Can\'t connect to database server: '.DB_SERVER;
 $response['error'] = $errData;
+$response['code'] = $errData['code'];
 $response['debug']['module'] = __FILE__;
 $response['debug']['user'] = DB_USER;
 $response['debug']['database'] = DB_DATABASE_NAME;
