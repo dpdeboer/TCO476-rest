@@ -43,7 +43,8 @@ require_once 'db_utils.php';
 								if ($v == 'NULL') {
 									$response['data'][$k] = NULL;
 								}
-							}							
+							}
+							$response['code'] = 200;
 						}						
 						else 
 						{
@@ -51,6 +52,7 @@ require_once 'db_utils.php';
 							$localErr['info'] = 'No airport records found for the specified ID';
 							$localErr['message'] = get_error_message ($link, 404);
 							$response['error'] = $localErr;
+							$response['code'] = 404;
 						}
 					} 
 					else 
@@ -59,6 +61,7 @@ require_once 'db_utils.php';
 						$localErr['info'] = 'No airport records found for the specified ID';
 						$localErr['message'] = get_error_message ($link, 404);
 						$response['error'] = $localErr;
+						$response['code'] = 404;
 					}
 					if ($debugState) {
 						// write detailed sql info
@@ -73,6 +76,7 @@ require_once 'db_utils.php';
 				$errData['message'] = get_error_message ($link, 400);
 				$errData['info'] = 'No data in request.';
 				$response['error'] = $errData;
+				$response['code'] = 400;
 			}
 		}
 	} else {
@@ -80,6 +84,7 @@ require_once 'db_utils.php';
 		$errData['code'] = 500;
 		$errData['message'] = 'DB Error on the server.';
 		$response['error'] = $errData;	
+		$response['code'] = 500;
 	}			
 	return $response;
 }

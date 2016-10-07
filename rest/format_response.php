@@ -11,7 +11,13 @@ if (!headers_sent()) {
 	} else {
 		header('content-type: application/json');
 	}
-	header('X-PHP-Response-Code: 200', true, 200);
+	if (empty($response['code'])) {
+		// if no code, assume 200.
+		// this could probably be made smarter, but the default is good for now.
+		$response['code'] = 200;
+	}
+	$headerString = 'X-PHP-Response-Code: '.$response['code'];
+	header($headerString, true, $response['code']);
 	header('Access-Control-Allow-Origin: *');
 }
 

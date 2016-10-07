@@ -30,6 +30,7 @@ if (!$link) {
 			$errData['code'] = 405;
 			$errData['message'] = 'Method not supported';
 			$response['error'] = $errData;
+			$response['code'] = $errData['code'];
 			if ($debugState) {
 				$response['debug']['module'] = __FILE__;
 			}
@@ -41,6 +42,7 @@ if (!$link) {
 			$errData['code'] = 400;
 			$errData['message'] = 'Only HTTPS calls are supported';
 			$response['error'] = $errData;
+			$response['code'] = $errData['code'];
 			if ($debugState) {
 				$response['debug']['module'] = __FILE__;
 				$response['debug']['globals'] = $GLOBALS;
