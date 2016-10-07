@@ -21,7 +21,6 @@ require_once 'db_utils.php';
 				// 
 				if (!empty($airportId)) { 
 					$response['error'] = $localErr;
-					$response['debug']['auth'] = $authInfo;
 				}
 				
 				// if there was an error, return it, otherwise add the record
@@ -51,8 +50,8 @@ require_once 'db_utils.php';
 					}
 					if ($idx == 0) {
 						$localErr = '';
-						$localErr = get_error_message ($link, 404);
 						$localErr['info'] = 'No airport records found for the specified ID';
+						$localErr = get_error_message ($link, 404);
 						$response['error'] = $localErr;
 					}
 					if ($debugState) {
