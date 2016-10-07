@@ -4,6 +4,7 @@ function _airport_get_airport ($link, $requestBuffer, $debugState) {
 require_once 'dbConfig.php';
 require_once 'db_utils.php';
 	// initialize the response buffer
+	// $requestBuffer is the AIRPORT ID to look up and return
 	$response = '';
 	// initialize the debug values
 	if ($debugState) {
@@ -16,12 +17,7 @@ require_once 'db_utils.php';
 			// validate the request buffer fields
 			if (!empty($requestBuffer)) {
 				$localErr = '';
-				$fieldName = 'airportId';
-				if (empty($requestBuffer[$fieldName])) {
-					$localErr['fields'][$fieldName] = "Missing";
-				} else {	
-					$airportId = $requestBuffer[$fieldName];
-				}
+				$airportId = $requestBuffer;
 				// 
 				if (!empty($airportId)) { 
 					$response['error'] = $localErr;

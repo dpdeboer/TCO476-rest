@@ -4,7 +4,7 @@
 require_once 'airport_get_airport.php';
 
 function _airport_get($link, $postData) {
-	$debugState = false;
+	// $debugState = false;
 	if ($debugState) {
 		$response['debug']['module'] = __FILE__;
 		$response['debug']['postData'] = $postData;
@@ -23,10 +23,10 @@ function _airport_get($link, $postData) {
 		$actionTaken = true;
     } 
 	*/
-	$action = 'airport';
+	$action = 'airportId';
 	if (!$actionTaken && (!empty($postData[$action]))) {
 		$requestBuffer = $postData[$action];
-		$response = _gratuity_get_airport ($link, $requestBuffer, $debugState);
+		$response = _airport_get_airport ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	if (!$actionTaken) {
