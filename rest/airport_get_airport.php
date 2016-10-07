@@ -74,7 +74,6 @@ require_once 'db_utils.php';
 				$response['error'] = $errData;
 			}
 		}
-*/
 	}			
 	// not implemented
 	$errData['code'] = 501;
