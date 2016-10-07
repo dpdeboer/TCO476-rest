@@ -22,7 +22,7 @@ require_once 'db_utils.php';
 				// if there was an error, return it, otherwise add the record
 				if (!empty($localErr)) {
 					if (empty($response['error'])) {
-						$errData = get_error_message ($link, 400);
+						$errData['message'] = get_error_message ($link, 400);
 						$errData['requestError'] = $localErr;
 						$response['error'] = $errData;
 					}
@@ -50,7 +50,7 @@ require_once 'db_utils.php';
 					{
 						$localErr = '';
 						$localErr['info'] = 'No airport records found for the specified ID';
-						$localErr = get_error_message ($link, 404);
+						$localErr['message'] = get_error_message ($link, 404);
 						$response['error'] = $localErr;
 					}
 					if ($debugState) {
@@ -63,7 +63,7 @@ require_once 'db_utils.php';
 					}
 				}
 			} else {
-				$errData = get_error_message ($link, 400);
+				$errData['message'] = get_error_message ($link, 400);
 				$errData['info'] = 'No data in request.';
 				$response['error'] = $errData;
 			}
