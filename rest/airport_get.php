@@ -5,6 +5,7 @@ require_once 'airport_get_airport.php';
 
 function _airport_get($link, $postData) {
 	// $debugState = false;
+	global $debugState;
 	if ($debugState) {
 		$response['debug']['module'] = __FILE__;
 		$response['debug']['postData'] = $postData;
