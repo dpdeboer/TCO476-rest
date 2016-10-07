@@ -36,7 +36,7 @@ require_once 'db_utils.php';
 					if ($result) {
 						if (mysqli_num_rows($result)  > 0) {
 							// take only the first record
-							$thisRecord = mysqli_fetch_assoc($result))  {
+							$thisRecord = mysqli_fetch_assoc($result)  {
 							$response['data'] = array_merge($thisRecord);
 							foreach ($response['data'] as $k => $v) {
 								// set "null" strings to null values
