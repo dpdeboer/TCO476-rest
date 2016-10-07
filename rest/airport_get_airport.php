@@ -71,11 +71,12 @@ require_once 'db_utils.php';
 				$response['error'] = $errData;
 			}
 		}
-	}			
+	} else {
 	// not implemented
-	$errData['code'] = 501;
-	$errData['message'] = 'Not implemented';
-	$response['error'] = $errData;
+		$errData['code'] = 500;
+		$errData['message'] = 'DB Error on the server.';
+		$response['error'] = $errData;	
+	}			
 	return $response;
 }
 ?>

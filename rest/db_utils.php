@@ -28,11 +28,11 @@ if (!defined('DB_UTILS')) {
 		//  for now, the messages are hard-coded into this file.
 		switch ($http_errno) {
 			case 400: 
-				$error_message_text = "Bad HTTP request (400)";
+				$error_message_text = "Bad HTTP request (400).";
 				break;
 				
 			case 404:
-				$error_message_text = "Resource not found (404)";
+				$error_message_text = "Resource not found (404).";
 				break;
 				
 			default:
