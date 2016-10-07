@@ -1,7 +1,7 @@
 <?php
 
 /* require files for each command that supports this method */
-require_once 'airport_get_study.php';
+require_once 'airport_get_airport.php';
 
 function _airport_get($link, $postData) {
 	$debugState = false;
