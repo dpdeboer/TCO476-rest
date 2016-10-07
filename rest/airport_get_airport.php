@@ -33,20 +33,22 @@ require_once 'db_utils.php';
 				} else {
 					// read conifguration for this study and condition
 					$queryString = 'SELECT * FROM '.DB_TABLE_AIRPORTS.
-						' WHERE airportId = "'.$airportId.'"';
+						' WHERE ident = "'.$airportId.'"';
 					$result = @mysqli_query ($link, $queryString);
 					$idx = 0;
-					if (mysqli_num_rows($result)  > 0) {
-						while ($thisRecord = mysqli_fetch_assoc($result))  {
-							$response['data'][$idx] = array_merge($thisRecord);
-							foreach ($response['data'][$idx] as $k => $v) {
-								// set "null" strings to null values
-								if ($v == 'NULL') {
-									$response['data'][$k] = NULL;
+					if ($result) {
+						if (mysqli_num_rows($result)  > 0) {
+							while ($thisRecord = mysqli_fetch_assoc($result))  {
+								$response['data'][$idx] = array_merge($thisRecord);
+								foreach ($response['data'][$idx] as $k => $v) {
+									// set "null" strings to null values
+									if ($v == 'NULL') {
+										$response['data'][$k] = NULL;
+									}
 								}
+								$idx += 1;
 							}
-							$idx += 1;
-						}
+						}						
 					}
 					if ($idx == 0) {
 						$localErr = '';
