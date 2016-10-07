@@ -18,10 +18,6 @@ require_once 'db_utils.php';
 			if (!empty($requestBuffer)) {
 				$localErr = '';
 				$airportId = $requestBuffer;
-				// 
-				if (!empty($airportId)) { 
-					$response['error'] = $localErr;
-				}
 				
 				// if there was an error, return it, otherwise add the record
 				if (!empty($localErr)) {
@@ -30,27 +26,28 @@ require_once 'db_utils.php';
 						$errData['requestError'] = $localErr;
 						$response['error'] = $errData;
 					}
-				} else {
+				} 
+				else 
+				{
 					// read conifguration for this study and condition
 					$queryString = 'SELECT * FROM '.DB_TABLE_AIRPORTS.
 						' WHERE ident = "'.$airportId.'"';
 					$result = @mysqli_query ($link, $queryString);
-					$idx = 0;
 					if ($result) {
 						if (mysqli_num_rows($result)  > 0) {
-							while ($thisRecord = mysqli_fetch_assoc($result))  {
-								$response['data'][$idx] = array_merge($thisRecord);
-								foreach ($response['data'][$idx] as $k => $v) {
-									// set "null" strings to null values
-									if ($v == 'NULL') {
-										$response['data'][$k] = NULL;
-									}
+							// take only the first record
+							$thisRecord = mysqli_fetch_assoc($result))  {
+							$response['data'] = array_merge($thisRecord);
+							foreach ($response['data'] as $k => $v) {
+								// set "null" strings to null values
+								if ($v == 'NULL') {
+									$response['data'][$k] = NULL;
 								}
-								$idx += 1;
-							}
+							}							
 						}						
-					}
-					if ($idx == 0) {
+					} 
+					else 
+					{
 						$localErr = '';
 						$localErr['info'] = 'No airport records found for the specified ID';
 						$localErr = get_error_message ($link, 404);
