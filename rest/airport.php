@@ -28,7 +28,10 @@ function _doAirport($resourceElems, $qpElems, $debugState)
 					$response['debug']['httpMethod'] = $_SERVER['REQUEST_METHOD'];
 					$response['debug']['resourceElems'] = $resourceElems;
 					$response['debug']['qpElems'] = $qpElems;
-					$response['debug']['data'] = json_decode(file_get_contents("php://input"), false);
+					$postData = mb_convert_encoding (file_get_contents("php://input"), "UTF-8", "auto");
+					$response['debug']['postData'] = $postData;
+					$response['debug']['data'] = json_decode($postData);
+
 					$response['debug']['module'] = __FILE__;
 				}				
 			}
