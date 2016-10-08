@@ -171,6 +171,8 @@ These query parameters can be used to modify the request as described in the tab
 
 | Parameter | Value | Action | airline | airport | flight | pilot |
 |-----------|-------|--------|:-------:|:-------:|:------:|:-----:|
-| debug     | true | returns debugging information about the request in the response | X | X | X | X |
-| airlineId | valid airline ID | selects the airline to which the resource belongs |  |  | X | X |
-| accessKey | valid access ID string | specifies the key that grants access to the resources | X |  | X | X |
+| debug     | true | returns debugging information about the request in the response | Opt | Opt | Opt | Opt |
+| airlineId | valid airline ID | selects the airline to which the resource belongs | No | No | Req | Opt |
+| accessKey | valid access ID string | specifies the key that grants access to the resources | * | No | * | * |
+
+*Not implemented, but planned to be implemented before release.
