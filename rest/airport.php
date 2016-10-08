@@ -25,8 +25,12 @@ function _doAirport($resourceElems, $qpElems, $debugState)
 				$response['error'] = $errData;
 				$response['code'] = $errData['code'];
 				if ($debugState) {
+					$response['debug']['httpMethod'] = $_SERVER['REQUEST_METHOD'];
+					$response['debug']['resourceElems'] = $resourceElems;
+					$response['debug']['qpElems'] = $qpElems;
+					$response['debug']['data'] = file_get_contents("php://input");
 					$response['debug']['module'] = __FILE__;
-				}
+				}				
 			}
 		} 
 		else 

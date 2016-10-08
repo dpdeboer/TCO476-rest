@@ -43,12 +43,21 @@ function getQpElems ($qpElemArray) {
 }
 
 // main method starts here
+/*
+*	API resource processor
+*
+*		Dispatches all resource requests.
+*			1. Read URL request and parse out elements:
+*				a) resource type and id
+*				b) any query parameters that might modify the request
+*			2. Dispatch on resource type and info from prev. step to process the request.
+*
+*/
 
 $apiResponse = [];
 $debugState = true; // by default, unless modified later by a query parameter
 
 $request = $_SERVER['REQUEST_URI']; 
-
 $apiResponse['file'] = __FILE__;
 $apiResponse['request'] = $request;
 $apiResponse['code'] = 200;
@@ -69,7 +78,7 @@ if (isset($requestElems[0])) {
 					// 	the [debug] index should always be present
                     $debugState = ($qpElems["debug"] == "false" ? false : true);
                     $apiResponse['debugState'] = $debugState;
-					// collect any remaining URL elements
+					// trim out to include only the remaining URL request elements
 					$resourceElems = $urlElems;
 					unset ($resourceElems[0]);
 					unset ($resourceElems[1]);
