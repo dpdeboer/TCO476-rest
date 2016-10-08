@@ -7,7 +7,9 @@ This code supports a basic REST API for \[very\] small airlines.
 
 The base URL is:
 
-```http://<server>/api/<resource>/<id>[?query-parameter-string]```
+```
+http://<server>/api/<resource>/<id>[?query-parameter-string]
+``` 
 
 ## Resources
 
@@ -29,7 +31,9 @@ Returns an airline resource.
 
 #### URL
 
-```http://<server>/api/airline/<id>```
+```
+http://<server>/api/airline/<id>
+```
 
 ID = the numeric ID of the airline
 
@@ -60,7 +64,9 @@ Returns an airport resource
 
 #### URL
 
-```http://<server>/api/airport/<id>```
+```
+http://<server>/api/airport/<id>
+```
 
 ID = the ICAO ID of the airport
 
@@ -101,7 +107,9 @@ Manages flight resources.
 
 #### URL
 
-```http://<server>/api/flight/<id>```
+```
+http://<server>/api/flight/<id>
+```
 
 ID = the numeric ID of the flight
 
@@ -135,7 +143,9 @@ Manages pilot resources.
 
 #### URL
 
-```http://<server>/api/pilot/<id>```
+```
+http://<server>/api/pilot/<id>
+```
 
 ID = the numeric ID of the pilot
 
