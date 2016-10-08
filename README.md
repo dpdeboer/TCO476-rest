@@ -161,3 +161,12 @@ This is the response definition for an pilot request entry.
   "AirlineId": <airline ID number>
 }
 ```
+
+
+## Query Parameters
+
+These query parameters can be used to modify the request as described in the table.
+
+| Parameter | Value | Action | airline | airport | flight | pilot |
+|-----------|-------|--------|:-------:|:-------:|:------:|:-----:|
+| debug     | true | returns debugging information about the request in the response | X | X | X | X |
