@@ -39,13 +39,13 @@ ID = the numeric ID of the airline
 
 #### Response
 
-This is the response definition for an airline request entry.
+This is sample response to an airline request.
 
 ```javascript
 {
-  "AirlineId": <number>,
-  "AirlineName": <string>,
-  "OwnerName": <string>
+	"AirlineId": "1",
+	"AirlineName": "Test Airline",
+	"OwnerName": "Bob Watson"
 }
 ```
 
@@ -117,16 +117,16 @@ ID = the numeric ID of the flight
 
 #### Response
 
-This is the response definition for an flight request entry.
+This is a sample response to a flight request.
 
 ```javascript
 {
-  "AirlineId": <airline ID number>,
-  "FlightId": <flight ID number>,
-  "StartAirportId": <airport ID string>,
-  "StartTime": <datetime>,
-  "EndAirportId": <airport ID string>,
-  "EndTime": <datetime>
+	"AirlineId": "1",
+	"FlightId": "999",
+	"StartAirportId": "KMCN",
+	"StartTime": null,
+	"EndAirportId": "KATL",
+	"EndTime": null
 }
 ```
 
@@ -153,14 +153,14 @@ ID = the numeric ID of the pilot
 
 #### Response
 
-This is the response definition for an pilot request entry.
+This is a sample response to a pilot request.
 
 ```javascript
 {
-  "PilotId": <pilot ID number>,
-  "LastName": string,
-  "FirstName": string,
-  "AirlineId": <airline ID number>
+	"PilotId": "1",
+	"LastName": "Watson",
+	"FirstName": "Bob",
+	"AirlineId": "1"
 }
 ```
 
