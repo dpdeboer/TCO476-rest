@@ -6,7 +6,7 @@ function getUrlElems ($requestElemArray) {
 	$returnValue = explode ("/", $requestElemArray);
 	// the first element is probably blank because of the leading
 	//  slash in the request so remove it, if it is.
-	if (!isset($returnValue[0])) {
+	if (empty($returnValue[0])) {
 		unset ($returnValue[0]);
 	}
 	// return via array_values to set the first index to 0
@@ -15,11 +15,11 @@ function getUrlElems ($requestElemArray) {
 
 function getQpElems ($qpElemArray) {
 	$returnValue = [];
-	$qpElems = explode ("&",$requestElems[1]);
+	$qpElems = explode ("&", $qpElemArray);
 	if (!empty($qpElems)){
 		// parse query parameters
 		foreach ($qpElems as $qpVal) {
-			$qpValElems = explode("=",$qpVal);
+			$qpValElems = explode("=", $qpVal);
 			if (!empty($qpValElems)) {
 				if (count($qpValElems)==2) {
 					// this is a key=value string so 
@@ -29,7 +29,7 @@ function getQpElems ($qpElemArray) {
 					// this is a key-only string so 
 					//   assign "true" to arrary indexed by key
 					$returnValue[$qpValElems[0]] = "true";
-				} // else more than 2 = unrecognized query param
+				} // else unreadable QP
 			}
 		}
 	}
@@ -71,17 +71,17 @@ if (isset($requestElems[0])) {
 					// collect any remaining URL elements
 					$resourceElems = $urlElems;
 					unset ($resourceElems[0]);
-					unset ($resourceElems[1]);					
+					unset ($resourceElems[1]);
 					$resourceElems = array_values($resourceElems);
 					// save these values before processing request
 					$apiResponse['resourceElems'] = $resourceElems;
 					$apiResponse['qpElems'] = $qpElems;
 					// select the method for the resource
-					switch ($urlElems[2]) {
+					switch ($urlElems[1]) {
 						case 'airport':
 							$response = _doAirport($resourceElems, $qpElems, $debugState);
 							break;
-							
+
 						default:
 							$response['code'] = 400;
 							$response['error']['message'] = 'Unsupported resource resource type.';		
