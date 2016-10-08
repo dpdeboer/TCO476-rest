@@ -24,7 +24,7 @@ Returns an airline resource.
 
 | Method | Comments |
 |--------|----------|
-| GET | **Not implemented** |
+| GET | Returns the specified airline resource |
 | POST | **Not allowed** |
 | PUT | **Not allowed** |
 | DELETE | **Not allowed** |
