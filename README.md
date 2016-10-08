@@ -100,10 +100,12 @@ Manages flight resources.
 
 | Method | Comments |
 |--------|----------|
-| GET | **Not implemented** |
+| GET | Returns the specified flight resource* |
 | POST | **Not implemented** |
 | PUT | **Not implemented** |
 | DELETE | **Not implemented** |
+
+* Requires a query parameter.
 
 #### URL
 
@@ -120,7 +122,7 @@ This is the response definition for an flight request entry.
 ```javascript
 {
   "AirlineId": <airline ID number>,
-  "PilotId": <pilot ID number>,
+  "FlightId": <flight ID number>,
   "StartAirportId": <airport ID string>,
   "StartTime": <datetime>,
   "EndAirportId": <airport ID string>,
@@ -170,3 +172,5 @@ These query parameters can be used to modify the request as described in the tab
 | Parameter | Value | Action | airline | airport | flight | pilot |
 |-----------|-------|--------|:-------:|:-------:|:------:|:-----:|
 | debug     | true | returns debugging information about the request in the response | X | X | X | X |
+| airlineId | valid airline ID | selects the airline to which the resource belongs |  |  | X | X |
+| accessKey | valid access ID string | specifies the key that grants access to the resources | X |  | X | X |
