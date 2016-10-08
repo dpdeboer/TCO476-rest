@@ -10,14 +10,18 @@ $response['debug']['file'] = __FILE__;
 $response['debug']['request'] = $request;
 $response['code'] = 200;
 
-$requestElems = explode ("&",$request);
+$requestElems = explode ("?",$request);
+$response['debug']['requestElems'] = $requestElems;
 if (!empty($requestElems[0])) {
-	$urlElems = explode ("/", $requestElems[0];
+	$urlElems = explode ("/", $requestElems[0]);
+	$response['debug']['urlElems'] = $urlElems;
 	if (!empty($urlElems)) {
-		if (!empty($urlElems[0])) {
-			if ($urlElems[0] == "api") {
+		// the leading slash in the URL make the [0] element empty
+		//   so the first element with something in it is [1]
+		if (!empty($urlElems[1])) {
+			if ($urlElems[1] == "api") {
 				// this is a correctly formatted URL
-				if (!empty($urlElems[1]) {
+				if (!empty($urlElems[1])) {
 					// process the query parameters, if any
 					if (!empty($requestElems[1])) {
 						$qpElems = explode ("&",$requestElems[1]);
@@ -29,11 +33,13 @@ if (!empty($requestElems[0])) {
 					}
 					// collect any remaining URL elements
 					$resourceElems = [];
-					for ($elemIdx = 2; $elemIdx < count($urlElems); $elemIdx++) {
+					for ($elemIdx = 3; $elemIdx < count($urlElems); $elemIdx++) {
 						array_push($resourceElems, $urlElems[$elemIdx]);
 					}
+					$response['debug']['resourceElems'] = $resourceElems;
+					$response['debug']['qpElems'] = $qpElems;
 					// select the method for the resource
-					switch ($urlElems[1]) {
+					switch ($urlElems[2]) {
 						case 'airport':
 							$response = _doAirport($resourceElems, $qpElems);
 							break;
@@ -48,6 +54,9 @@ if (!empty($requestElems[0])) {
 				$response['code'] = 400;
 				$response['error']['message'] = 'Unsupported resource specification.';		
 			}
+		} else {
+			$response['code'] = 400;
+			$response['error']['message'] = 'Unsupported resource specification.';		
 		}
 	} else {
 		$response['code'] = 400;
