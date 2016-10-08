@@ -7,19 +7,33 @@ This code supports a basic REST API for \[very\] small airlines.
 
 The base URL is:
 
-```http://<server>/api/<resource>/<id>[?query-parameter-string]```
+```
+http://<server>/api/<resource>/<id>[?query-parameter-string]
+``` 
 
 ## Resources
 
 This api supports these resources:
 
-### Airline
+### airline
 
-**Not implemented yet**
+Returns an airline resource.
+
+
+#### Methods
+
+| Method | Comments |
+|--------|----------|
+| GET | **Not implemented** |
+| POST | **Not allowed** |
+| PUT | **Not allowed** |
+| DELETE | **Not allowed** |
 
 #### URL
 
-```http://<server>/api/airline/<id>```
+```
+http://<server>/api/airline/<id>
+```
 
 ID = the numeric ID of the airline
 
@@ -35,13 +49,24 @@ This is the response definition for an airline request entry.
 }
 ```
 
-### Airport
+### airport
 
-**Not implemented yet**
+Returns an airport resource
+
+#### Methods
+
+| Method | Comments |
+|--------|----------|
+| GET | returns specified airport resource |
+| POST | **Not allowed** |
+| PUT | **Not allowed** |
+| DELETE | **Not allowed** |
 
 #### URL
 
-```http://<server>/api/airport/<id>```
+```
+http://<server>/api/airport/<id>
+```
 
 ID = the ICAO ID of the airport
 
@@ -67,13 +92,24 @@ This is a sample response to an airport request.
 }
 ```
 
-### Flight
+### flight
 
-**Not implemented yet**
+Manages flight resources.
+
+#### Methods
+
+| Method | Comments |
+|--------|----------|
+| GET | **Not implemented** |
+| POST | **Not implemented** |
+| PUT | **Not implemented** |
+| DELETE | **Not implemented** |
 
 #### URL
 
-```http://<server>/api/flight/<id>```
+```
+http://<server>/api/flight/<id>
+```
 
 ID = the numeric ID of the flight
 
@@ -92,14 +128,24 @@ This is the response definition for an flight request entry.
 }
 ```
 
-### Pilot
+### pilot
 
+Manages pilot resources.
 
-**Not implemented yet**
+#### Methods
+
+| Method | Comments |
+|--------|----------|
+| GET | **Not implemented** |
+| POST | **Not implemented** |
+| PUT | **Not implemented** |
+| DELETE | **Not implemented** |
 
 #### URL
 
-```http://<server>/api/pilot/<id>```
+```
+http://<server>/api/pilot/<id>
+```
 
 ID = the numeric ID of the pilot
 
@@ -115,3 +161,12 @@ This is the response definition for an pilot request entry.
   "AirlineId": <airline ID number>
 }
 ```
+
+
+## Query Parameters
+
+These query parameters can be used to modify the request as described in the table.
+
+| Parameter | Value | Action | airline | airport | flight | pilot |
+|-----------|-------|--------|:-------:|:-------:|:------:|:-----:|
+| debug     | true | returns debugging information about the request in the response | X | X | X | X |

@@ -1,5 +1,6 @@
 <?php 
 require_once 'dbConfig.php';
+require_once 'airline_get.php';
 
 $response = '';
 
@@ -14,25 +15,7 @@ function _doAirline($resourceElems, $qpElems, $debugState)
 		if (true) 
 		{
 			if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-				// get the request data
-				// if the data is not in the the post form, try the query string
-				// method not supported, for now
-				$errData['code'] = 405;
-				$errData['message'] = 'Method not supported';
-				$response['error'] = $errData;
-				$response['code'] = $errData['code'];
-				if ($debugState) {
-					$response['debug']['httpMethod'] = $_SERVER['REQUEST_METHOD'];
-					$response['debug']['resourceElems'] = $resourceElems;
-					$response['debug']['qpElems'] = $qpElems;
-					$postData = mb_convert_encoding (file_get_contents("php://input"), "UTF-8", "auto");
-					$response['debug']['postData'] = $postData;
-					$response['debug']['data'] = json_decode($postData);
-
-					$response['debug']['module'] = __FILE__;
-				}
-				// when supported, delete the above and fill ine the call
-				// $response = _airline_get($link, $resourceElems, $qpElems, $debugState);
+				$response = _airline_get($link, $resourceElems, $qpElems, $debugState);
 			} else {
 				// method not supported
 				$errData['code'] = 405;
