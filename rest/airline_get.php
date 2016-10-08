@@ -1,5 +1,4 @@
 <?php
-
 /* require files for each command that supports this method */
 require_once 'airline_get_airline.php';
 
