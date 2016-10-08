@@ -18,13 +18,7 @@ function _doAirport($resourceElems, $qpElems)
 			if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				// get the request data
 				// if the data is not in the the post form, try the query string
-				if (empty($postData)) {
-					$postData = $_GET;
-				} 
-				if (empty($postData)) {
-					$postData = $_POST;
-				}
-				$response = _airport_get($link, $postData);
+				$response = _airport_get($link, $resourceElems, $qpElems, $debugState);
 			} else {
 				// method not supported
 				$errData['code'] = 405;

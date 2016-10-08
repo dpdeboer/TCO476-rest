@@ -1,23 +1,23 @@
 <?php
 
-function _airport_get_airport ($link, $requestBuffer, $debugState) {
+function _airport_get_airport ($link, $resourceElems, $qpElems, $debugState) {
 require_once 'dbConfig.php';
 require_once 'db_utils.php';
 	// initialize the response buffer
-	// $requestBuffer is the AIRPORT ID to look up and return
+	// $resourceElems[0] is the AIRPORT ID to look up and return
 	$response = '';
 	// initialize the debug values
 	if ($debugState) {
 		$response['debug']['module'] = __FILE__;
-		$response['debug']['requestBuffer'] = $requestBuffer;
+		$response['debug']['resourceElems'] = $resourceElems;
 		$response['debug']['link'] = $link;
 	}
 	if (!is_null($link)) {
 		if (empty($response['error'])) {
 			// validate the request buffer fields
-			if (!empty($requestBuffer)) {
+			if (!empty($resourceElems[0])) {
 				$localErr = '';
-				$airportId = $requestBuffer;
+				$airportId = $resourceElems[0];
 				
 				// if there was an error, return it, otherwise add the record
 				if (!empty($localErr)) {
