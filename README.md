@@ -20,7 +20,8 @@ Returns an airline resource.
 
 #### Methods
 
-|| Method || Comments ||
+| Method | Comments |
+|--------|----------|
 | GET | **Not implemented** |
 | POST | **Not allowed** |
 | PUT | **Not allowed** |
@@ -50,7 +51,8 @@ Returns an airport resource
 
 #### Methods
 
-|| Method || Comments ||
+| Method | Comments |
+|--------|----------|
 | GET | returns specified airport resource |
 | POST | **Not allowed** |
 | PUT | **Not allowed** |
@@ -90,7 +92,8 @@ Manages flight resources.
 
 #### Methods
 
-|| Method || Comments ||
+| Method | Comments |
+|--------|----------|
 | GET | **Not implemented** |
 | POST | **Not implemented** |
 | PUT | **Not implemented** |
@@ -123,7 +126,8 @@ Manages pilot resources.
 
 #### Methods
 
-|| Method || Comments ||
+| Method | Comments |
+|--------|----------|
 | GET | **Not implemented** |
 | POST | **Not implemented** |
 | PUT | **Not implemented** |
