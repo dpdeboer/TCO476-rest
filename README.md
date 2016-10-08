@@ -110,7 +110,7 @@ Manages flight resources.
 #### URL
 
 ```
-http://<server>/api/flight/<id>
+http://<server>/api/flight/<id>?airlineId=<airlineId>
 ```
 
 ID = the numeric ID of the flight
