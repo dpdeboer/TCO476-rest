@@ -38,7 +38,7 @@ require_once 'db_utils.php';
 					else 
 					{
 						$localErr = '';
-						$localErr['info'] = 'No airport records found for the specified ID';
+						$localErr['info'] = 'No flight resources found for the specified ID';
 						$localErr['message'] = get_error_message ($link, 404);
 						$response['error'] = $localErr;
 						$response['code'] = 404;
@@ -47,7 +47,7 @@ require_once 'db_utils.php';
 				else 
 				{
 					$localErr = '';
-					$localErr['info'] = 'No airport records found for the specified ID';
+					$localErr['info'] = 'No flight resources found for the specified ID';
 					$localErr['message'] = get_error_message ($link, 404);
 					$response['error'] = $localErr;
 					$response['code'] = 404;
