@@ -18,14 +18,16 @@ This api supports these resources:
 **Not implemented yet**
 
 #### URL
+
 ```http://<server>/api/airline/<id>```
+
 ID = the numeric ID of the airline
 
 #### Response
 
 This is the response definition for an airline request entry.
 
-```
+```javascript
 {
   "AirlineId": <number>,
   "AirlineName": <string>,
@@ -34,17 +36,20 @@ This is the response definition for an airline request entry.
 ```
 
 ### Airport
+
 **Not implemented yet**
 
 #### URL
+
 ```http://<server>/api/airport/<id>```
+
 ID = the ICAO ID of the airport
 
 #### Response
 
 This is a sample response to an airport request.
 
-```
+```javascript
 {
   "ident": "KMCO"
   "type": "large_airport"
@@ -67,14 +72,16 @@ This is a sample response to an airport request.
 **Not implemented yet**
 
 #### URL
+
 ```http://<server>/api/flight/<id>```
+
 ID = the numeric ID of the flight
 
 #### Response
 
 This is the response definition for an flight request entry.
 
-```
+```javascript
 {
   "AirlineId": <airline ID number>,
   "PilotId": <pilot ID number>,
@@ -91,14 +98,16 @@ This is the response definition for an flight request entry.
 **Not implemented yet**
 
 #### URL
+
 ```http://<server>/api/pilot/<id>```
+
 ID = the numeric ID of the pilot
 
 #### Response
 
 This is the response definition for an pilot request entry.
 
-```
+```javascript
 {
   "PilotId": <pilot ID number>,
   "LastName": string,
