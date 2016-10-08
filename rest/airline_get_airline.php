@@ -16,18 +16,14 @@ require_once 'db_utils.php';
 			// validate the request buffer fields
 			if (isset($airlineId)) {
 				// read conifguration for this study and condition
-				$queryString = 'SELECT * FROM '.DB_TABLE_AIRLINES.
+				$queryString = 'SELECT `AirlineId`, `AirlineName`, `OwnerName` FROM '.DB_TABLE_AIRLINES.
 					' WHERE airlineId = "'.$airlineId.'"';
 				$result = @mysqli_query ($link, $queryString);
 				if ($result) {
 					if (mysqli_num_rows($result)  > 0) {
 						// take only the first record
 						$thisRecord = mysqli_fetch_assoc($result);
-						if (isset($thisRecord['accessKey'])) {
-							// this is supposed to be secret, so remove it from the response
-							unset($thisRecord['accessKey']);
-						}
-						$response['data'] = array_values($thisRecord);
+						$response['data'] = array_merge($thisRecord);
 						// correct any null values so they are converted to JSON correctly
 						foreach ($response['data'] as $k => $v) {
 							// set "null" strings to null values
