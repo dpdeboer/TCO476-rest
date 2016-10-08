@@ -16,7 +16,7 @@ function getUrlElems ($requestElemArray) {
 function getQpElems ($qpElemArray) {
 	$returnValue = [];
 	$qpElems = explode ("&", $qpElemArray);
-	if (!empty($qpElems)){
+	if ((count($qpElems) > 0)  && (!empty($qpElems[0]))){
 		// parse query parameters
 		foreach ($qpElems as $qpVal) {
 			$qpValElems = explode("=", $qpVal);
