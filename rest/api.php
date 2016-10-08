@@ -1,9 +1,9 @@
 <?php 
 // require the top moduled for each resource that's supported.
+require_once 'airline.php';
 require_once 'airport.php';
 require_once 'flight.php';
 require_once 'pilot.php';
-require_once 'airline.php';
 
 
 // worker functions used to process the request

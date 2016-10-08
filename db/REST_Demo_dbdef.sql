@@ -30,6 +30,17 @@ CREATE TABLE `Airlines` (
   `accessKey` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'NULL key = no security'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Indexes for table `Airlines`
+--
+ALTER TABLE `Airlines`
+  ADD PRIMARY KEY (`AirlineId`),
+  ADD UNIQUE KEY `AirlineId` (`AirlineId`),
+  ADD UNIQUE KEY `accessKey` (`accessKey`);
+  
+ALTER TABLE `Airlines`
+  MODIFY `AirlineId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
 -- --------------------------------------------------------
 
 --
@@ -54,6 +65,12 @@ CREATE TABLE IF NOT EXISTS `Airports` (
   PRIMARY KEY (`ident`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Indexes for table `Airports`
+--
+ALTER TABLE `Airports`
+  ADD PRIMARY KEY (`ident`);
+
 -- --------------------------------------------------------
 
 --
@@ -71,6 +88,19 @@ CREATE TABLE `Flights` (
   `EndTime` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Indexes for table `Flights`
+--
+ALTER TABLE `Flights`
+  ADD PRIMARY KEY (`FlightRecordId`),
+  ADD UNIQUE KEY `AirlineId` (`AirlineId`,`FlightId`);
+  
+--
+-- AUTO_INCREMENT for table `Flights`
+--
+ALTER TABLE `Flights`
+  MODIFY `FlightRecordId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  
 -- --------------------------------------------------------
 
 --
@@ -78,9 +108,22 @@ CREATE TABLE `Flights` (
 --
 
 DROP TABLE IF EXISTS `Pilots`;
-CREATE TABLE IF NOT EXISTS `Pilots` (
+CREATE TABLE `Pilots` (
   `PilotId` bigint(20) NOT NULL,
-  `LastName` varchar(64) NOT NULL,
-  `FirstName` varchar(64) NOT NULL,
-  `AirlineId` bigint(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `LastName` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `FirstName` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `AirlineId` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for table `Pilots`
+--
+ALTER TABLE `Pilots`
+  ADD PRIMARY KEY (`PilotId`);
+  
+  --
+-- AUTO_INCREMENT for table `Pilots`
+--
+ALTER TABLE `Pilots`
+  MODIFY `PilotId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  
