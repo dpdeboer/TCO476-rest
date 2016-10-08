@@ -21,6 +21,7 @@ USE `REST_Demo`;
 --
 -- Table structure for table `Airlines`
 --
+
 DROP TABLE IF EXISTS `Airlines`;
 CREATE TABLE `Airlines` (
   `AirlineId` bigint(20) NOT NULL,
@@ -60,13 +61,14 @@ CREATE TABLE IF NOT EXISTS `Airports` (
 --
 
 DROP TABLE IF EXISTS `Flights`;
-CREATE TABLE IF NOT EXISTS `Flights` (
+CREATE TABLE `Flights` (
+  `FlightRecordId` bigint(20) NOT NULL,
   `AirlineId` bigint(20) NOT NULL,
-  `PilotId` bigint(20) NOT NULL,
-  `StartAirportId` varchar(16) NOT NULL,
-  `StartTime` datetime NOT NULL,
-  `EndAirportId` varchar(16) NOT NULL,
-  `EndTime` datetime NOT NULL
+  `FlightId` bigint(20) NOT NULL,
+  `StartAirportId` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `StartTime` time DEFAULT NULL,
+  `EndAirportId` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EndTime` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
