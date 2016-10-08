@@ -1,6 +1,12 @@
 <?php 
+// require the top moduled for each resource that's supported.
 require_once 'airport.php';
+require_once 'flight.php';
+require_once 'pilot.php';
+require_once 'airline.php';
 
+
+// worker functions used to process the request
 function getUrlElems ($requestElemArray) {
 	// breaks URL elements found in request to individual strings
 	$returnValue = explode ("/", $requestElemArray);
@@ -42,7 +48,7 @@ function getQpElems ($qpElemArray) {
 	return $returnValue;
 }
 
-// main method starts here
+// main method code starts here
 /*
 *	API resource processor
 *
@@ -88,8 +94,20 @@ if (isset($requestElems[0])) {
 					$apiResponse['qpElems'] = $qpElems;
 					// select the method for the resource
 					switch ($urlElems[1]) {
+						case 'airline':
+							$response = _doAirline($resourceElems, $qpElems, $debugState);
+							break;
+
 						case 'airport':
 							$response = _doAirport($resourceElems, $qpElems, $debugState);
+							break;
+
+						case 'flight':
+							$response = _doFlight($resourceElems, $qpElems, $debugState);
+							break;
+
+						case 'pilot':
+							$response = _doPilot($resourceElems, $qpElems, $debugState);
 							break;
 
 						default:
