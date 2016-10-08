@@ -13,9 +13,18 @@ The base URL is:
 
 This api supports these resources:
 
-### Airline
+### airline
 
-**Not implemented yet**
+Returns an airline resource.
+
+
+#### Methods
+
+|| Method || Comments ||
+| GET | **Not implemented** |
+| POST | **Not allowed** |
+| PUT | **Not allowed** |
+| DELETE | **Not allowed** |
 
 #### URL
 
@@ -35,9 +44,17 @@ This is the response definition for an airline request entry.
 }
 ```
 
-### Airport
+### airport
 
-**Not implemented yet**
+Returns an airport resource
+
+#### Methods
+
+|| Method || Comments ||
+| GET | returns specified airport resource |
+| POST | **Not allowed** |
+| PUT | **Not allowed** |
+| DELETE | **Not allowed** |
 
 #### URL
 
@@ -67,9 +84,17 @@ This is a sample response to an airport request.
 }
 ```
 
-### Flight
+### flight
 
-**Not implemented yet**
+Manages flight resources.
+
+#### Methods
+
+|| Method || Comments ||
+| GET | **Not implemented** |
+| POST | **Not implemented** |
+| PUT | **Not implemented** |
+| DELETE | **Not implemented** |
 
 #### URL
 
@@ -92,10 +117,17 @@ This is the response definition for an flight request entry.
 }
 ```
 
-### Pilot
+### pilot
 
+Manages pilot resources.
 
-**Not implemented yet**
+#### Methods
+
+|| Method || Comments ||
+| GET | **Not implemented** |
+| POST | **Not implemented** |
+| PUT | **Not implemented** |
+| DELETE | **Not implemented** |
 
 #### URL
 
