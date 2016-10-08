@@ -6,6 +6,7 @@ $response = '';
 $debugState = true;
 function _doAirport($resourceElems, $qpElems)
 {
+	global $debugState;
 	$link = @mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_DATABASE_NAME);
 	if (!$link) {
 		require 'response_500_db_open_error.php';

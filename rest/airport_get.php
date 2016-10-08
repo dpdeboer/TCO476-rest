@@ -3,31 +3,15 @@
 /* require files for each command that supports this method */
 require_once 'airport_get_airport.php';
 
-function _airport_get($link, $postData) {
-	// $debugState = false;
-	global $debugState;
+function _airport_get($link, $resourceElems, $qpElems, $debugState) {
 	if ($debugState) {
 		$response['debug']['module'] = __FILE__;
-		$response['debug']['postData'] = $postData;
+		$response['debug']['resourceElems'] = $resourceElems;
 	}
 	$actionTaken = false;
-	/*
-	* Repeat for each command that supports this method.
-	*  only one method allowed per call.
-	* 1. define $action to the the command
-	* 2. Test for that command
-	* 3. if true, call the function that performs the command
-	$action = 'config';
-	if (!$actionTaken && (!empty($postData[$action]))) {
-		$requestBuffer = $postData[$action];
-		$response = _gratuity_get_config ($link, $requestBuffer, $debugState);
-		$actionTaken = true;
-    } 
-	*/
-	$action = 'airportId';
-	if (!$actionTaken && (!empty($postData[$action]))) {
-		$requestBuffer = $postData[$action];
-		$response = _airport_get_airport ($link, $requestBuffer, $debugState);
+	if (!empty($resourceElems)) {
+		// get airport entry with resource ID
+		$response = _airport_get_airport ($link, $resourceElems, $qpElems, $debugState);
 		$actionTaken = true;
     } 
 	if (!$actionTaken) {
