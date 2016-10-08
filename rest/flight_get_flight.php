@@ -16,8 +16,10 @@ require_once 'db_utils.php';
 			// validate the request buffer fields
 			if ((isset($flightId)) && isset($qpElems['airlineId'])) {
 				// read conifguration for this study and condition
-				$queryString = 'SELECT * FROM '.DB_TABLE_FLIGHTS.
-					' WHERE flightId = "'.$flightId.'" AND airlineId = "''.$qpElems['airlineId'].";';
+				$queryString = 'SELECT `AirlineId`, `FlightId`, `StartAirportId`, '.
+					'`StartTime`, `EndAirportId`, `EndTime` FROM '.DB_TABLE_FLIGHTS.
+					' WHERE flightId = "'.$flightId.
+					'" AND airlineId = "''.$qpElems['airlineId'].";';
 				$result = @mysqli_query ($link, $queryString);
 				if ($result) {
 					if (mysqli_num_rows($result)  > 0) {
