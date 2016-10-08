@@ -23,9 +23,9 @@ require_once 'db_utils.php';
 					if (mysqli_num_rows($result)  > 0) {
 						// take only the first record
 						$thisRecord = mysqli_fetch_assoc($result);
-						if (isset($thisRecord['accessKey')) {
+						if (isset($thisRecord['accessKey'])) {
 							// this is supposed to be secret, so remove it from the response
-							unset($thisRecord['accessKey'));
+							unset($thisRecord['accessKey']);
 						}
 						$response['data'] = array_values($thisRecord);
 						// correct any null values so they are converted to JSON correctly
