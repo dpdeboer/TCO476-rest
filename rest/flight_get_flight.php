@@ -19,7 +19,7 @@ require_once 'db_utils.php';
 				$queryString = 'SELECT `AirlineId`, `FlightId`, `StartAirportId`, '.
 					'`StartTime`, `EndAirportId`, `EndTime` FROM '.DB_TABLE_FLIGHTS.
 					' WHERE flightId = "'.$flightId.
-					'" AND airlineId = "''.$qpElems['airlineId'].";';
+					'" AND airlineId = "'.$qpElems['airlineId'].'"';
 				$result = @mysqli_query ($link, $queryString);
 				if ($result) {
 					if (mysqli_num_rows($result)  > 0) {
