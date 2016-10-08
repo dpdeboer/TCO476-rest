@@ -67,7 +67,8 @@ if (isset($requestElems[0])) {
 					$qpElems = getQpElems ($requestElems[1]);
 					// set the debug flag 
 					// 	the [debug] index should always be present
-					$debugState = (boolean)$qpElems["debug"];
+                    $debugState = ($qpElems["debug"] == "false" ? false : true);
+                    $apiResponse['debugState'] = $debugState;
 					// collect any remaining URL elements
 					$resourceElems = $urlElems;
 					unset ($resourceElems[0]);
