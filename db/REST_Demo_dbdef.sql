@@ -13,7 +13,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `REST_Demo`
 --
-CREATE DATABASE IF NOT EXISTS `REST_Demo` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `REST_Demo` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE `REST_Demo`;
 
 -- --------------------------------------------------------
@@ -21,12 +21,12 @@ USE `REST_Demo`;
 --
 -- Table structure for table `Airlines`
 --
-
 DROP TABLE IF EXISTS `Airlines`;
-CREATE TABLE IF NOT EXISTS `Airlines` (
+CREATE TABLE `Airlines` (
   `AirlineId` bigint(20) NOT NULL,
-  `AirlineName` varchar(64) NOT NULL,
-  `OwnerName` varchar(64) NOT NULL
+  `AirlineName` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `OwnerName` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `accessKey` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'NULL key = no security'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -81,4 +81,4 @@ CREATE TABLE IF NOT EXISTS `Pilots` (
   `LastName` varchar(64) NOT NULL,
   `FirstName` varchar(64) NOT NULL,
   `AirlineId` bigint(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
