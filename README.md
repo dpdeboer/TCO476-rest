@@ -15,6 +15,14 @@ http://<server>/api/<resource>/<id>[?query-parameter-string]
 
 This api supports these resources:
 
+| Resource | Resource Description |
+|----------|-------------|
+| **airline** | A resource that can have flight, pilot, and scheduled flight (scheduledFlight) resources |
+| **flight** | A general trip from one airport to another. It is not a scheduled flight. See **scheduledFlight** for the resource that describes a scheduled flight. |
+| **pilot** | A pilot who would fly a plane on a scheduled flight. |
+| **scheduledFlight** | An instance of a flight that is scheduled for a specific date. |
+| **plane** | An aircraft. A **plane** can be assigned to a flight. | 
+
 ### airline
 
 Returns an airline resource.
@@ -157,12 +165,63 @@ This is a sample response to a pilot request.
 
 ```javascript
 {
-	"PilotId": "1",
-	"LastName": "Watson",
-	"FirstName": "Bob",
-	"AirlineId": "1"
+    "PilotId": "1",
+    "LastName": "Watson",
+    "FirstName": "Bob",
+    "AirlineId": "1"
 }
 ```
+
+### scheduledFlight
+
+An instance of a flight that is scheduled for a specific date. A **scheduledFlight** can refer to a:
+* **flight**
+* **pilot**
+* **plane**
+
+#### Methods
+
+| Method | Comments |
+|--------|----------|
+| GET | **Not implemented** |
+| POST | **Not implemented** |
+| PUT | **Not implemented** |
+| DELETE | **Not implemented** |
+
+#### URL
+
+```
+http://<server>/api/scheduledFlight/<id>?airlineId=<airlineId>
+```
+
+ID = the numeric ID of the scheduled flight record (not the flight number used by passenger).
+
+#### Response
+
+**Not available**
+
+### plane
+
+An aircraft. A **plane** can be assigned to a flight. 
+
+| Method | Comments |
+|--------|----------|
+| GET | **Not implemented** |
+| POST | **Not implemented** |
+| PUT | **Not implemented** |
+| DELETE | **Not implemented** |
+
+#### URL
+
+```
+http://<server>/api/plane/<id>
+```
+
+ID = the ID of the plane
+
+#### Response
+
+**Not available**
 
 
 ## Query Parameters
