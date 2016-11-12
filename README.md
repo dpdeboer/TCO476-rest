@@ -259,12 +259,12 @@ These query parameters can be used to modify the request as described in the tab
 
 | Label name | Description | Expected outcome |
 |------------|-------------|------------------|
-| bug | does not work as it should | the problem should be fixed |
-| documentation | a documentation issue | depends on another label (e.g. **bug** or **help wanted**) |
-| duplicate | there's already an issue like this one | ignore this one and refer to the original issue |
+| [bug](https://github.com/rbwatson/TCO476-rest/issues?q=is%3Aissue+is%3Aopen+label%3Abug) | does not work as it should | the problem should be fixed |
+| [documentation](https://github.com/rbwatson/TCO476-rest/issues?q=is%3Aissue+is%3Aopen+label%3Adocumentation) | a documentation issue | depends on another label (e.g. **bug** or **help wanted**) |
+| [duplicate](https://github.com/rbwatson/TCO476-rest/issues?q=is%3Aissue+is%3Aopen+label%3Aduplicate) | there's already an issue like this one | ignore this one and refer to the original issue |
 | [feature](https://github.com/rbwatson/TCO476-rest/issues?q=is%3Aissue+is%3Aopen+label%3Afeature) | a feature that does not currently exist | create the functionality described in the issue |
-| help wanted | need help | offer assistance as described in the issue |
-| in progress | someone is working on this | don't work on this because someone else is |
-| invalid | the issue is not clear or well defined | clarify or close the issue |
-| question | need the information described in the question | provide the information, if possible |
-| wontfix | the issue will not be addressed | nothing further |
+| [help wanted](https://github.com/rbwatson/TCO476-rest/issues?q=is%3Aissue+is%3Aopen+label%3Ahelp%20wanted) | need help | offer assistance as described in the issue |
+| [in progress](https://github.com/rbwatson/TCO476-rest/issues?q=is%3Aissue+is%3Aopen+label%3Ain%20progress) | someone is working on this | don't work on this because someone else is |
+| [invalid](https://github.com/rbwatson/TCO476-rest/issues?q=is%3Aissue+is%3Aopen+label%3Ainvalid) | the issue is not clear or well defined | clarify or close the issue |
+| [question](https://github.com/rbwatson/TCO476-rest/issues?q=is%3Aissue+is%3Aopen+label%3Aquestion) | need the information described in the question | provide the information, if possible |
+| [wontfix](https://github.com/rbwatson/TCO476-rest/issues?q=is%3Aissue+is%3Aopen+label%3Awontfix) | the issue will not be addressed | nothing further |
