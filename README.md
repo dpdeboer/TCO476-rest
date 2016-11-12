@@ -262,7 +262,7 @@ These query parameters can be used to modify the request as described in the tab
 | bug | does not work as it should | the problem should be fixed |
 | documentation | a documentation issue | depends on another label (e.g. **bug** or **help wanted**) |
 | duplicate | there's already an issue like this one | ignore this one and refer to the original issue |
-| feature | a feature that does not currently exist | create the functionality described in the issue |
+| [feature](https://github.com/rbwatson/TCO476-rest/issues?q=is%3Aissue+is%3Aopen+label%3Afeature) | a feature that does not currently exist | create the functionality described in the issue |
 | help wanted | need help | offer assistance as described in the issue |
 | in progress | someone is working on this | don't work on this because someone else is |
 | invalid | the issue is not clear or well defined | clarify or close the issue |
