@@ -11,31 +11,46 @@ The base URL is:
 http://<server>/api/<resource>/<id>[?query-parameter-string]
 ``` 
 
+The test server URL is:
+
+```
+http://54.167.221.72/api/
+``` 
+
+and a sample resource request is:
+
+```
+http://54.167.221.72/api/airport/KMCN
+``` 
+
+
 ## Resources
 
 This api supports these resources:
 
-| Resource | Resource Description |
-|----------|-------------|
-| **airline** | A resource that can have flight, pilot, and scheduled flight (scheduledFlight) resources |
-| **flight** | A general trip from one airport to another. It is not a scheduled flight. See **scheduledFlight** for the resource that describes a scheduled flight. |
-| **pilot** | A pilot who would fly a plane on a scheduled flight. |
-| **scheduledFlight** | An instance of a flight that is scheduled for a specific date. |
-| **plane** | An aircraft. A **plane** can be assigned to a flight. | 
+| Resource | Resource Description | Release milestone |
+|----------|-------------|------------|
+| **airline** | A resource that can have flight, pilot, and scheduled flight (scheduledFlight) resources | Fall 2016 |
+| **airport** | An airport from the ICAO database | Fall 2016 |
+| **flight** | A general trip from one airport to another. It is not a scheduled flight. See **scheduledFlight** for the resource that describes a scheduled flight. | Fall 2016 |
+| **pilot** | A pilot who would fly a plane on a scheduled flight. | Fall 2016 |
+| **scheduledFlight** | An instance of a flight that is scheduled for a specific date. | Spring 2017 |
+| **plane** | An aircraft. A **plane** can be assigned to a flight. | Spring 2017 |
 
 ### airline
 
 Returns an airline resource.
 
+This is a read-only endpoint and cannot be updated by using the API. It must be updated through the database by an administrator.
 
 #### Methods
 
-| Method | Comments |
+| Method | Comments | 
 |--------|----------|
 | GET | Returns the specified airline resource |
 | POST | **Not allowed** |
-| PUT | **Not allowed** |
-| DELETE | **Not allowed** |
+| PUT | **Not allowed** | 
+| DELETE | **Not allowed** | 
 
 #### URL
 
@@ -61,12 +76,14 @@ This is sample response to an airline request.
 
 Returns an airport resource
 
+This is a read-only endpoint and cannot be updated by using the API. It must be updated through the database by an administrator.
+
 #### Methods
 
 | Method | Comments |
 |--------|----------|
 | GET | returns specified airport resource |
-| POST | **Not allowed** |
+| POST | **Not allowed** | 
 | PUT | **Not allowed** |
 | DELETE | **Not allowed** |
 
@@ -140,7 +157,7 @@ This is a sample response to a flight request.
 
 ### pilot
 
-Manages pilot resources.
+Manages pilot resources
 
 #### Methods
 
@@ -174,7 +191,8 @@ This is a sample response to a pilot request.
 
 ### scheduledFlight
 
-An instance of a flight that is scheduled for a specific date. A **scheduledFlight** can refer to a:
+An instance of a flight that is scheduled for a specific date. The desecription of a **scheduledFlight** refers to a:
+
 * **flight**
 * **pilot**
 * **plane**
@@ -198,7 +216,7 @@ ID = the numeric ID of the scheduled flight record (not the flight number used b
 
 #### Response
 
-**Not available**
+**Not implemented**
 
 ### plane
 
@@ -214,7 +232,7 @@ An aircraft. A **plane** can be assigned to a flight.
 #### URL
 
 ```
-http://<server>/api/plane/<id>
+http://<server>/api/plane/<id>?airlineId=<id>
 ```
 
 ID = the ID of the plane
@@ -235,3 +253,18 @@ These query parameters can be used to modify the request as described in the tab
 | accessKey | valid access ID string | specifies the key that grants access to the resources | * | No | * | * |
 
 *Not implemented, but planned to be implemented before release.
+
+
+# Issue labels
+
+| Label name | Description | Expected outcome |
+|------------|-------------|------------------|
+| [bug](https://github.com/rbwatson/TCO476-rest/labels/bug) | does not work as it should | the problem should be fixed |
+| [documentation](https://github.com/rbwatson/TCO476-rest/labels/documentation) | a documentation issue | depends on another label (e.g. **bug** or **help wanted**) |
+| [duplicate](https://github.com/rbwatson/TCO476-rest/labels/duplicate) | there's already an issue like this one | ignore this one and refer to the original issue |
+| [feature](https://github.com/rbwatson/TCO476-rest/labels/feature) | a feature that does not currently exist | create the functionality described in the issue |
+| [help wanted](https://github.com/rbwatson/TCO476-rest/labels/help%20wanted) | need help | offer assistance as described in the issue |
+| [in progress](https://github.com/rbwatson/TCO476-rest/labels/in%20progress) | someone is working on this | don't work on this because someone else is |
+| [invalid](https://github.com/rbwatson/TCO476-rest/labels/invalid) | the issue is not clear or well defined | clarify or close the issue |
+| [question](https://github.com/rbwatson/TCO476-rest/labels/question) | need the information described in the question | provide the information, if possible |
+| [wontfix](https://github.com/rbwatson/TCO476-rest/labels/wontfix) | the issue will not be addressed | nothing further |
