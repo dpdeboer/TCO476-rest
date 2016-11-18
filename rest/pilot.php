@@ -19,9 +19,10 @@ function _doPilot($resourceElems, $qpElems, $debugState)
 				$response = _pilot_get($link, $resourceElems, $qpElems, $debugState);
 			} else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				// get the request data
-				//  first try to decode the HTTP_RAW_POST_DATA variable 
-				if (!empty($HTTP_RAW_POST_DATA)) {
-					$postData = json_decode($HTTP_RAW_POST_DATA,true);
+				//  first try to decode the php://input variable 
+                $postInput = file_get_contents('php://input');
+				if (!empty($postInput)) {
+					$postData = json_decode($postInput,true);
 				}		
 				// if the data is not in the raw post data, try the post form
 				if (empty($postData)) {

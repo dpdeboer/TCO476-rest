@@ -10,7 +10,6 @@ require_once 'db_utils.php';
 		$response['debug']['module'] = __FILE__;
 		$response['debug']['qpElems'] = $qpElems;
 		$response['debug']['postData'] = $postData;
-		$response['debug']['globals'] = $GLOBALS;
 		$response['debug']['link'] = $link;
 	}
 	if (/* !is_null($link) */ false ) {
