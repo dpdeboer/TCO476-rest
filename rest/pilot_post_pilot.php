@@ -41,7 +41,7 @@ require_once 'db_utils.php';
 						}
 					}
 					$response['code'] = 200;
-				}						
+				}				
 				else 
 				{
 					$localErr = '';
@@ -51,6 +51,14 @@ require_once 'db_utils.php';
 					$response['code'] = 404;
 				}
 			} 
+			else 
+			{
+				$localErr = '';
+				$localErr['info'] = 'Unable to created new record.';
+				$localErr['message'] = get_error_message ($link, 409);
+				$response['error'] = $localErr;
+				$response['code'] = 409;
+			}
 			if ($debugState) {
 				// write detailed sql info
 				$localErr = '';
