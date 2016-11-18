@@ -7,8 +7,8 @@ if (!defined('REST_CONSTANTS')) {
 	//  php scripts on the server.	
 	// database interfaces
 	define('DB_SERVER', 'localhost', false);
-	define('DB_USER', 'phpRest', false);
-	define('DB_PASS', '1Password', false);
+	define('DB_USER', 'DEFINE_FOR_YOUR_SYSTEM', false);
+	define('DB_PASS', 'DEFINE_FOR_YOUR_SYSTEM', false);
 	define('DB_DATABASE_NAME', 'REST_Demo', false);
 	// database tables
     define('DB_TABLE_AIRPORTS', 'Airports', false);
