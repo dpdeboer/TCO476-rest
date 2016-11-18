@@ -1,6 +1,6 @@
 <?php
 
-function _pilot_post_pilot ($link, $qpElems, $debugState) {
+function _pilot_post_pilot ($link, $postData, $qpElems, $debugState) {
 require_once 'dbConfig.php';
 require_once 'db_utils.php';
 	// initialize the response buffer
@@ -9,6 +9,7 @@ require_once 'db_utils.php';
 	if ($debugState) {
 		$response['debug']['module'] = __FILE__;
 		$response['debug']['qpElems'] = $qpElems;
+		$response['debug']['postData'] = $postData;
 		$response['debug']['link'] = $link;
 	}
 	if (/* !is_null($link) */ false ) {

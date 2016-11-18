@@ -18,7 +18,8 @@ function _doPilot($resourceElems, $qpElems, $debugState)
 			if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				$response = _pilot_get($link, $resourceElems, $qpElems, $debugState);
 			} else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-				$response = _pilot_post($link, $resourceElems, $qpElems, $debugState);
+				$postData = $_POST;
+				$response = _pilot_post($link, $resourceElems, $postData, $qpElems, $debugState);
 			} else {
 				// method not supported
 				$errData['code'] = 405;

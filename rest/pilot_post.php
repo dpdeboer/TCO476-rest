@@ -2,7 +2,7 @@
 /* require files for each command that supports this method */
 require_once 'pilot_post_pilot.php';
 
-function _pilot_post($link, $resourceElems, $qpElems, $debugState) {
+function _pilot_post($link, $resourceElems, $postData, $qpElems, $debugState) {
 	if ($debugState) {
 		$response['debug']['module'] = __FILE__;
 		$response['debug']['resourceElems'] = $resourceElems;
@@ -10,7 +10,7 @@ function _pilot_post($link, $resourceElems, $qpElems, $debugState) {
 	$actionTaken = false;
 	if (!empty($qpElems)) {
 		// create a new pilot entry from qpElems
-		$response = _pilot_post_pilot ($link, $qpElems, $debugState);
+		$response = _pilot_post_pilot ($link, $postData, $qpElems, $debugState);
 		$actionTaken = true;
     } else {
 		// perform pilot lookup by query parameter
