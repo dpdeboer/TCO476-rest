@@ -18,7 +18,19 @@ function _doPilot($resourceElems, $qpElems, $debugState)
 			if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				$response = _pilot_get($link, $resourceElems, $qpElems, $debugState);
 			} else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-				$postData = $_POST;
+				// get the request data
+				//  first try to decode the HTTP_RAW_POST_DATA variable 
+				if (!empty($HTTP_RAW_POST_DATA)) {
+					$postData = json_decode($HTTP_RAW_POST_DATA,true);
+				}		
+				// if the data is not in the raw post data, try the post form
+				if (empty($postData)) {
+					$postData = $_POST;
+				}
+				// finally, try the $_GET variable
+				if (empty($postData)) {
+					$postData = $_GET;
+				} 
 				$response = _pilot_post($link, $resourceElems, $postData, $qpElems, $debugState);
 			} else {
 				// method not supported
