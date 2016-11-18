@@ -22,9 +22,16 @@ require_once 'db_utils.php';
 			// validate the request buffer field
 			$result = @mysqli_query ($link, $queryString);
 			if ($result) {
-				if (mysqli_num_rows($result)  > 0) {
+				// the creation was successful so try to read it back
+				$readQueryString = "SELECT `PilotId`, `LastName`, `FirstName`, `AirlineId` FROM `Pilots` ".
+					"WHERE `LastName` = '". $postData['LastName']. "' AND ".
+					"`FirstName` = '". $postData['FirstName'] . "' AND ". 
+					"`AirlineId` = ". $postData['AirlineId'] . ";";
+				$readResult = @mysqli_query ($link, $readQueryString);		
+				// there should only be one record because the table won't create dupes.
+				if (mysqli_num_rows($readResult)  > 0) {
 					// take only the first record
-					$thisRecord = mysqli_fetch_assoc($result);
+					$thisRecord = mysqli_fetch_assoc($readResult);
 					$response['data'] = array_merge($thisRecord);
 					// correct any null values so they are converted to JSON correctly
 					foreach ($response['data'] as $k => $v) {
@@ -38,7 +45,7 @@ require_once 'db_utils.php';
 				else 
 				{
 					$localErr = '';
-					$localErr['info'] = 'No pilot resources found for the specified ID';
+					$localErr['info'] = 'Unable to find created record.';
 					$localErr['message'] = get_error_message ($link, 404);
 					$response['error'] = $localErr;
 					$response['code'] = 404;
@@ -48,6 +55,9 @@ require_once 'db_utils.php';
 				// write detailed sql info
 				$localErr = '';
 				$localErr['sqlQuery'] = $queryString;
+				if (!empty($readQueryString)) {
+					$localErr['sqlReadQuery'] = $readQueryString;
+				}
 				$localErr['sqlError'] =  mysqli_sqlstate($link);
 				$localErr['message'] = mysqli_error($link);				
 				$response['debug']['sqlSelect1']= $localErr;
@@ -64,7 +74,7 @@ require_once 'db_utils.php';
 */
 		}
 	} else {
-	// not implemented
+		// not implemented
 		$errData['code'] = 500;
 		$errData['message'] = 'DB Error on the server.';
 		$response['error'] = $errData;	
