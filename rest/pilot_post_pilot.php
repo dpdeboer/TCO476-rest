@@ -23,8 +23,8 @@ require_once 'db_utils.php';
 			$result = @mysqli_query ($link, $queryString);
 			if ($result) {
 				// the creation was successful so try to read it back
-				$readQueryString = "SELECT `PilotId`, `LastName`, `FirstName`, `AirlineId` FROM `Pilots` ".
-					"WHERE `LastName` = '". $postData['LastName']. "' AND ".
+				$readQueryString = "SELECT `PilotId`, `LastName`, `FirstName`, `AirlineId` FROM ".DB_TABLE_PILOTS.
+					" WHERE `LastName` = '". $postData['LastName']. "' AND ".
 					"`FirstName` = '". $postData['FirstName'] . "' AND ". 
 					"`AirlineId` = ". $postData['AirlineId'] . ";";
 				$readResult = @mysqli_query ($link, $readQueryString);		
