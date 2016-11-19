@@ -16,7 +16,7 @@ require_once 'db_utils.php';
 			// validate the request buffer fields
 			if (isset($pilotId)) {
 				// read conifguration for this study and condition
-				$queryString = 'SELECT * FROM '.DB_TABLE_PILOTS.
+				$queryString = 'SELECT `PilotId`, `LastName`, `FirstName`, `AirlineId`  FROM '.DB_TABLE_PILOTS.
 					' WHERE pilotId = "'.$pilotId.'"';
 				$result = @mysqli_query ($link, $queryString);
 				if ($result) {
