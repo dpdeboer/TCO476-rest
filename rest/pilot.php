@@ -2,6 +2,7 @@
 require_once 'dbConfig.php';
 require_once 'pilot_get.php';
 require_once 'pilot_post.php';
+require_once 'pilot_delete.php';
 
 $response = '';
 
