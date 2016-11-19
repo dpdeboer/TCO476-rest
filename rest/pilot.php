@@ -2,6 +2,7 @@
 require_once 'dbConfig.php';
 require_once 'pilot_get.php';
 require_once 'pilot_post.php';
+require_once 'pilot_delete.php';
 
 $response = '';
 
@@ -33,6 +34,9 @@ function _doPilot($resourceElems, $qpElems, $debugState)
 					$postData = $_GET;
 				} 
 				$response = _pilot_post($link, $resourceElems, $postData, $qpElems, $debugState);
+			} else if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+				$response = _pilot_delete ($link, $resourceElems, $qpElems, $debugState);
+
 			} else {
 				// method not supported
 				$errData['code'] = 405;
