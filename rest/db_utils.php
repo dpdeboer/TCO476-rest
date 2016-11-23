@@ -35,6 +35,10 @@ if (!defined('DB_UTILS')) {
 				$error_message_text = "Resource not found (404).";
 				break;
 				
+			case 409:
+				$error_message_text = "Duplicate resource (409).";
+				break;
+				
 			default:
 				$error_message_text = "Unrecognized error: ".$http_errno;
 				break;

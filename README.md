@@ -164,9 +164,9 @@ Manages pilot resources
 | Method | Comments |
 |--------|----------|
 | GET | Returns the specified pilot resource. |
-| POST | **Not implemented** |
+| POST | Adds a new pilot to an airline. |
 | PUT | **Not implemented** |
-| DELETE | **Not implemented** |
+| DELETE | Removes a pilot from an airline. |
 
 #### URL
 
@@ -175,6 +175,15 @@ http://<server>/api/pilot/<id>
 ```
 
 ID = the numeric ID of the pilot
+
+#### Request
+
+| Method | Request info |
+|--------|----------|
+| GET | The pilot to retrieve is specified by ID in the URL. |
+| POST | The pilot is described by a data object that contains the pilot's **LastName**, **FirstName**, & **irlineId** |
+| PUT | **Not implemented** |
+| DELETE | The pilot to remove is specified by ID in the URL.  |
 
 #### Response
 
