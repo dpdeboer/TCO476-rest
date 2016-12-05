@@ -1,3 +1,9 @@
+---
+layout: page
+Title: Flight Resource
+permalink: /flightresource/
+---  
+
 # Overview 
 The Flight Resource provides specific flight information including airports, airline, flight id, start and end time. The information can only be provided in the resource output if it is provided in the flight database. 
 # Functions   
