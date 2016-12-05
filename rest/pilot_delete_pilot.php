@@ -1,6 +1,6 @@
 <?php
 
-function _pilot_get_pilot ($link, $pilotId, $qpElems, $debugState) {
+function _pilot_delete_pilot ($link, $pilotId, $qpElems, $debugState) {
 require_once 'dbConfig.php';
 require_once 'db_utils.php';
 	// initialize the response buffer
@@ -16,31 +16,11 @@ require_once 'db_utils.php';
 			// validate the request buffer fields
 			if (isset($pilotId)) {
 				// read conifguration for this study and condition
-				$queryString = 'SELECT `PilotId`, `LastName`, `FirstName`, `AirlineId`  FROM '.DB_TABLE_PILOTS.
+				$queryString = 'DELETE FROM '.DB_TABLE_PILOTS.
 					' WHERE pilotId = "'.$pilotId.'"';
 				$result = @mysqli_query ($link, $queryString);
 				if ($result) {
-					if (mysqli_num_rows($result)  > 0) {
-						// take only the first record
-						$thisRecord = mysqli_fetch_assoc($result);
-						$response['data'] = array_merge($thisRecord);
-						// correct any null values so they are converted to JSON correctly
-						foreach ($response['data'] as $k => $v) {
-							// set "null" strings to null values
-							if ($v == 'NULL') {
-								$response['data'][$k] = NULL;
-							}
-						}
 						$response['code'] = 200;
-					}						
-					else 
-					{
-						$localErr = '';
-						$localErr['info'] = 'No pilot resources found for the specified ID';
-						$localErr['message'] = get_error_message ($link, 404);
-						$response['error'] = $localErr;
-						$response['code'] = 404;
-					}
 				} 
 				else 
 				{

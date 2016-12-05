@@ -1,6 +1,8 @@
 <?php 
 require_once 'dbConfig.php';
 require_once 'pilot_get.php';
+require_once 'pilot_post.php';
+require_once 'pilot_delete.php';
 
 $response = '';
 
@@ -16,6 +18,25 @@ function _doPilot($resourceElems, $qpElems, $debugState)
 		{
 			if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				$response = _pilot_get($link, $resourceElems, $qpElems, $debugState);
+			} else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+				// get the request data
+				//  first try to decode the php://input variable 
+                $postInput = file_get_contents('php://input');
+				if (!empty($postInput)) {
+					$postData = json_decode($postInput,true);
+				}		
+				// if the data is not in the raw post data, try the post form
+				if (empty($postData)) {
+					$postData = $_POST;
+				}
+				// finally, try the $_GET variable
+				if (empty($postData)) {
+					$postData = $_GET;
+				} 
+				$response = _pilot_post($link, $resourceElems, $postData, $qpElems, $debugState);
+			} else if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+				$response = _pilot_delete ($link, $resourceElems, $qpElems, $debugState);
+
 			} else {
 				// method not supported
 				$errData['code'] = 405;
