@@ -2,8 +2,9 @@
 layout: page
 Title: Airport Resource
 permalink: /airportresource/  
----
-  # Overview  
+---  
+
+# Overview  
 The Airport Resource allows the user to receive information regarding a specific airport based on the input of an ICAO airport ID.The ICAO airport ID refers to a set of international codes used to identify airports. The code for each airport can easily be found in online databases.  
   
 # Functions  
